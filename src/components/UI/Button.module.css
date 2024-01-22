@@ -1,0 +1,12 @@
+.removeBtn {
+  color: red;
+  font-size: 35px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.completedBtn {
+  color: green;
+  font-size: 35px;
+  cursor: pointer;
+  margin: 0 5px;
+}

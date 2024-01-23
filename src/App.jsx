@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import './App.css';
-import TodoForm from './components/Todo/TodoForm';
-import TodoList from './components/Todo/TodoList';
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import "./App.css";
+import TodoForm from "./components/Todo/TodoForm";
+import TodoList from "./components/Todo/TodoList";
+import User from "./components/User/User";
 
 function App() {
   let countCompletedTodos = 0;
@@ -38,9 +39,16 @@ function App() {
   }
 
   controlCompletedTodos();
+
+  const [user, setUser] = useState("");
   return (
     <div className="App">
       <h1>Список задач</h1>
+      {!user ? (
+        <User changeUser={setUser} />
+      ) : (
+        <span className="hiUser">{`Hi, ${user}`}</span>
+      )}
       <hr />
       <TodoForm addTodo={addTodoHandler} />
       {todos.length > 0 ? (

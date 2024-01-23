@@ -6,4 +6,8 @@
 h1 {
   margin: 20px 0;
 }
-
+.hiUser {
+  margin: 15px 0;
+  display: block;
+  font-size: 20px;
+}

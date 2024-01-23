@@ -7,3 +7,34 @@ body {
   background: #112b49;
   color: #fff;
 }
+.load {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #112b497e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+.load span {
+  animation: loading 1s infinite;
+  padding: 10px;
+  /* border: solid 1px #fff; */
+  border-radius: 5px;
+  box-shadow: rgba(211, 225, 235, 0.3) 0px 1px 10px 4px;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

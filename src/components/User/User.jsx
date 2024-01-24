@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./User.module.css";
 
 // eslint-disable-next-line react/prop-types
-function User({ changeUser }) {
+function User({ changeUser, showTodos }) {
   const [userName, setUserName] = useState("");
   const [userPass, setUserPass] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,6 +22,7 @@ function User({ changeUser }) {
         if (response.data.result === "userVerified") {
           changeUser(userName);
           setLoading(false);
+          showTodos(userName);
           setUserName("");
           setUserPass("");
         }

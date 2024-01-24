@@ -1,28 +1,32 @@
-import { useState } from 'react';
-import styles from './TodoForm.module.css';
+import { useState } from "react";
+import styles from "./TodoForm.module.css";
 
 /* eslint-disable react/prop-types */
-function TodoForm({ addTodo }) {
-  const [text, setText] = useState('');
+function TodoForm({ addTodo, user }) {
+  const [text, setText] = useState("");
 
   function onSubmitHandler(e) {
     e.preventDefault();
     addTodo(text);
-    setText('');
+    setText("");
   }
 
   return (
-    <div className={styles.todoFormContainer}>
-      <form onSubmit={onSubmitHandler}>
-        <input
-          onChange={(e) => setText(e.target.value)}
-          value={text}
-          type="text"
-          placeholder="новая задача"
-        />
-        <button type="submit">Добавить</button>
-      </form>
-    </div>
+    <>
+      {!user ? null : (
+        <div className={styles.todoFormContainer}>
+          <form onSubmit={onSubmitHandler}>
+            <input
+              onChange={(e) => setText(e.target.value)}
+              value={text}
+              type="text"
+              placeholder="новая задача"
+            />
+            <button type="submit">Добавить</button>
+          </form>
+        </div>
+      )}{" "}
+    </>
   );
 }
 

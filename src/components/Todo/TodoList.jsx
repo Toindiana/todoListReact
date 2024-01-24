@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import Todo from './Todo';
+import Todo from "./Todo";
 function Todos({ todos, removeTodo, completedTodo }) {
   return (
     <ul>

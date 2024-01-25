@@ -95,12 +95,11 @@ function App() {
       });
   }
 
-  function controlCompletedTodos() {
+  (function controlCompletedTodos() {
     todos.forEach((todo) => {
       if (todo.completed) countCompletedTodos++;
     });
-  }
-  controlCompletedTodos();
+  })();
 
   function outUserHandler() {
     setUser("");

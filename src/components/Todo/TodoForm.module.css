@@ -32,3 +32,20 @@ button {
   border: none;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 578px) {
+  .todoFormContainer form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .todoFormContainer input {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .todoFormContainer button {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+}

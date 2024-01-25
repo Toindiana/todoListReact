@@ -11,3 +11,18 @@ h1 {
   display: block;
   font-size: 20px;
 }
+.outBtn {
+  background: #fe0e00;
+  color: #ffffff;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.outBtn:hover {
+  background: #fe0d0098;
+}
+@media screen and (max-width: 768px) {
+  .App {
+    max-width: 90%;
+  }
+}

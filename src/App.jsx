@@ -22,6 +22,10 @@ function App() {
       )
       .then(function (response) {
         const arrFetchTodos = response.data.data;
+        if (!arrFetchTodos) {
+          setTodos([]);
+          return;
+        }
         const arrTodos = arrFetchTodos.map((todo) => {
           return {
             text: todo.textTodo,
@@ -98,13 +102,23 @@ function App() {
   }
   controlCompletedTodos();
 
+  function outUserHandler() {
+    setUser("");
+    setTodos([]);
+  }
+
   return (
     <div className="App">
       <h1>Список задач</h1>
       {!user ? (
         <User changeUser={setUser} showTodos={fetchAllTodos} />
       ) : (
-        <span className="hiUser">{`Hi, ${user}`}</span>
+        <>
+          <span className="hiUser">{`Привет, ${user}`}</span>
+          <button className="outBtn" onClick={outUserHandler}>
+            Выйти
+          </button>
+        </>
       )}
       <hr />
       <TodoForm addTodo={addTodoHandler} user={user} />

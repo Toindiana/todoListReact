@@ -19,12 +19,18 @@ function User({ changeUser, showTodos }) {
         bodyFormData
       )
       .then(function (response) {
-        if (response.data.result === "userVerified") {
+        if (
+          response.data.result === "userVerified" ||
+          response.data.result === "userAdded"
+        ) {
           changeUser(userName);
           setLoading(false);
           showTodos(userName);
           setUserName("");
           setUserPass("");
+        } else if (response.data.result === "noPass") {
+          setLoading(false);
+          alert("неверный пароль");
         }
       })
       .catch(function (error) {

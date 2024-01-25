@@ -6,6 +6,13 @@ import TodoForm from "./components/Todo/TodoForm";
 import TodoList from "./components/Todo/TodoList";
 import User from "./components/User/User";
 
+const URL_ALL_TODOS = "https://yakovenko-aleksandr.ru/todoReact/php/todos.php";
+const URL_ADD_TODO = "https://yakovenko-aleksandr.ru/todoReact/php/addTodo.php";
+const URL_REMOVE_TODO =
+  "https://yakovenko-aleksandr.ru/todoReact/php/removeTodo.php";
+const URL_COMPLETED_TODO =
+  "https://yakovenko-aleksandr.ru/todoReact/php/completed.php";
+
 function App() {
   const [user, setUser] = useState("");
 
@@ -16,10 +23,7 @@ function App() {
     let bodyFormData = new FormData();
     bodyFormData.append("name", nameUser);
     axios
-      .post(
-        "https://yakovenko-aleksandr.ru/todoReact/php/todos.php",
-        bodyFormData
-      )
+      .post(URL_ALL_TODOS, bodyFormData)
       .then(function (response) {
         const arrFetchTodos = response.data.data;
         if (!arrFetchTodos) {
@@ -48,10 +52,7 @@ function App() {
     bodyFormData.append("completed", false);
 
     axios
-      .post(
-        "https://yakovenko-aleksandr.ru/todoReact/php/addTodo.php",
-        bodyFormData
-      )
+      .post(URL_ADD_TODO, bodyFormData)
       .then(function (response) {
         console.log(response.data);
         fetchAllTodos(user);
@@ -65,10 +66,7 @@ function App() {
     let bodyFormData = new FormData();
     bodyFormData.append("id", id);
     axios
-      .post(
-        "https://yakovenko-aleksandr.ru/todoReact/php/removeTodo.php",
-        bodyFormData
-      )
+      .post(URL_REMOVE_TODO, bodyFormData)
       .then(function (response) {
         console.log(response.data);
         fetchAllTodos(user);
@@ -82,10 +80,7 @@ function App() {
     let bodyFormData = new FormData();
     bodyFormData.append("id", id);
     axios
-      .post(
-        "https://yakovenko-aleksandr.ru/todoReact/php/completed.php",
-        bodyFormData
-      )
+      .post(URL_COMPLETED_TODO, bodyFormData)
       .then(function (response) {
         console.log(response.data);
         fetchAllTodos(user);

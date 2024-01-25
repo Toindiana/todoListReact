@@ -2,6 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import styles from "./User.module.css";
 
+const URL_CONTROL_USER =
+  "https://yakovenko-aleksandr.ru/todoReact/php/controlUser.php";
+
 // eslint-disable-next-line react/prop-types
 function User({ changeUser, showTodos }) {
   const [userName, setUserName] = useState("");
@@ -14,10 +17,7 @@ function User({ changeUser, showTodos }) {
     bodyFormData.append("name", userName);
     bodyFormData.append("pass", userPass);
     axios
-      .post(
-        "https://yakovenko-aleksandr.ru/todoReact/php/controlUser.php",
-        bodyFormData
-      )
+      .post(URL_CONTROL_USER, bodyFormData)
       .then(function (response) {
         if (
           response.data.result === "userVerified" ||

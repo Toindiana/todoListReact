@@ -5,6 +5,7 @@ import "./App.css";
 import TodoForm from "./components/Todo/TodoForm";
 import TodoList from "./components/Todo/TodoList";
 import User from "./components/User/User";
+import Error from "./components/Error/Error";
 
 const URL_ALL_TODOS = "https://yakovenko-aleksandr.ru/todoReact/php/todos.php";
 const URL_ADD_TODO = "https://yakovenko-aleksandr.ru/todoReact/php/addTodo.php";
@@ -14,10 +15,16 @@ const URL_COMPLETED_TODO =
   "https://yakovenko-aleksandr.ru/todoReact/php/completed.php";
 
 function App() {
-  const [user, setUser] = useState("");
-
   let countCompletedTodos = 0;
+
+  const [user, setUser] = useState("");
   const [todos, setTodos] = useState([]);
+  const [error, setError] = useState(false);
+
+  function showError() {
+    outUserHandler();
+    setError(true);
+  }
 
   function fetchAllTodos(nameUser) {
     let bodyFormData = new FormData();
@@ -41,6 +48,7 @@ function App() {
       })
       .catch(function (error) {
         console.log(error);
+        showError();
       });
   }
 
@@ -59,6 +67,7 @@ function App() {
       })
       .catch(function (error) {
         console.log(error);
+        showError();
       });
   }
 
@@ -73,6 +82,7 @@ function App() {
       })
       .catch(function (error) {
         console.log(error);
+        showError();
       });
   }
 
@@ -87,6 +97,7 @@ function App() {
       })
       .catch(function (error) {
         console.log(error);
+        showError();
       });
   }
 
@@ -101,7 +112,7 @@ function App() {
     setTodos([]);
   }
 
-  return (
+  return !error ? (
     <div className="App">
       <h1>Список задач</h1>
       {!user ? (
@@ -130,6 +141,8 @@ function App() {
         <h4>завершенных задач: {countCompletedTodos}</h4>
       ) : null}
     </div>
+  ) : (
+    <Error />
   );
 }
 
